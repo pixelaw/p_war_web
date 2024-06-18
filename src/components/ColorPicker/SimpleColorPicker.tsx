@@ -24,8 +24,8 @@ const SimpleColorPicker: React.FC<ColorPickerProps> = ({onColorSelect, color: se
             {colors.map((color, index) => (
                 <button
                     key={index}
-                    style={{backgroundColor: color, outline: selectedColor === color ? '4px solid black' : 'none'}}
-                    className={`${styles.button} ${color === '#FFFFFF' ? styles['button-white'] : ''}`}
+                    style={{ backgroundColor: color }}
+                    className={`${styles.button} ${color === '#FFFFFF' ? styles['button-white'] : ''} ${color === selectedColor ? styles.selected : ''}`}
                     aria-label={`Color ${color}`}
                     onClick={() => onColorSelect(color)}
                 ></button>

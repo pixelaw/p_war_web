@@ -32,6 +32,13 @@ body {
     z-index: 1000; /* Ensure it's above other content */
 }
 
+.main {
+    flex-grow: 1;
+    display: flex; /* Make this a flex container */
+    height: 100vh; /* Fill the full viewport height */
+    width: 100vw; /* Fill the full viewport height */
+}
+
 .colorpicker {
     position: absolute;
     width: 100%;

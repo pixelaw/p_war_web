@@ -6,7 +6,7 @@ const Governance: React.FC = () => {
   const headerHeight = 64; // px
 
   return (
-    <div className='min-h-screen bg-gray-900 text-white flex flex-col'>
+    <div className='min-h-screen bg-gray-900 w-full text-white flex flex-col'>
       {/* <div className='flex items-center justify-between p-4 bg-gray-800 relative'>
         <Link to="/" className='text-2xl font-bold'>
           p/war

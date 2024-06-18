@@ -49,7 +49,7 @@ const ProposalDetails: React.FC = () => {
   const againstPercentage = totalPoints === 0 ? 0 : (proposal.againstPoints / totalPoints) * 100;
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col">
+    <div className="min-h-screen bg-gray-900 w-full text-white flex flex-col">
       {/* <div className="flex items-center justify-between p-4 bg-gray-800">
         <Link to="/" className="text-2xl font-bold">
           p/war
