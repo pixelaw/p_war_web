@@ -9,7 +9,7 @@ import SimpleColorPicker from "@/components/ColorPicker/SimpleColorPicker.tsx";
 import MenuBar from "@/components/MenuBar/MenuBar.tsx";
 import Apps from "@/components/Apps/Apps.tsx";
 import {useDojoAppStore} from "@/stores/DojoAppStore.ts";
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, Link, useLocation} from "react-router-dom";
 import Loading from "@/components/Loading/Loading.tsx";
 import Settings from "@/components/Settings/Settings.tsx";
 import {usePixelawProvider} from "@/providers/PixelawProvider.tsx";
@@ -53,6 +53,13 @@ function App() {
     useEffect(() => {
         pixelStore.refresh()
     }, [updateService.tileChanged]);
+
+    const location = useLocation();
+
+    useEffect(() => {
+        // Reset color picker visibility on route change
+            setIsColorPickerVisible(false);
+        }, [location]);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -167,9 +174,9 @@ function App() {
                                 <button className={styles.placePixelButton} onClick={toggleColorPicker} style={{ display: isColorPickerVisible ? 'none' : 'flex' }}>
                                     Place a Pixel
                                 </button>
-                                {/* <Link to="/governance" className={styles.governPixelsButton} onClick={toggleColorPicker} style={{ display: isColorPickerVisible ? 'none' : 'flex' }}>
+                                <Link to="/governance" className={styles.governPixelsButton} onClick={toggleColorPicker} style={{ display: isColorPickerVisible ? 'none' : 'flex' }}>
                                     Govern Pixels
-                                </Link>　*/}
+                                </Link>
                             </div>
 
                             {/* Disable for p/war */}
