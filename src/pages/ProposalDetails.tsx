@@ -49,8 +49,8 @@ const ProposalDetails: React.FC = () => {
   const againstPercentage = totalPoints === 0 ? 0 : (proposal.againstPoints / totalPoints) * 100;
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col">
-      <div className="flex items-center justify-between p-4 bg-gray-800">
+    <div className="min-h-screen bg-gray-900 w-full text-white flex flex-col">
+      {/* <div className="flex items-center justify-between p-4 bg-gray-800">
         <Link to="/" className="text-2xl font-bold">
           p/war
         </Link>
@@ -65,7 +65,7 @@ const ProposalDetails: React.FC = () => {
             8/10PX
           </button>
         </div>
-      </div>
+      </div> */}
       <div className="p-4 flex-grow overflow-auto" style={{ height: `calc(100vh - ${headerHeight}px - 112px)` }}>
         <div className="max-w-3xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-2">

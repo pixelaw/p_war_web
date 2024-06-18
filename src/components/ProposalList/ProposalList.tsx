@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaSearch, FaFilter } from 'react-icons/fa';
-import { proposals } from '../data/proposals';
-import FilterMenu from './FilterMenu';
+import { proposals } from '../../data/proposals';
+import FilterMenu from '../FilterMenu/FilterMenu';
 import { Link } from 'react-router-dom';
 
 interface ProposalListProps {
