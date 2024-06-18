@@ -54,7 +54,7 @@ body {
 }
 
 .container {
-    background-color: darkblue; /* Replace with the actual color value */
+    background-color: #2f1643; /* Replace with the actual color value */
     min-height: 100vh; /* Equivalent to min-h-screen */
     display: flex;
     flex-direction: column; /* Equivalent to flex-col */
