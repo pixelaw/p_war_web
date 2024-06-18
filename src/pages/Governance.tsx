@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ProposalList from '../components/ProposalList';
+import ProposalList from '../components/ProposalList/ProposalList';
 
 const Governance: React.FC = () => {
   const headerHeight = 64; // px
 
   return (
     <div className='min-h-screen bg-gray-900 text-white flex flex-col'>
-      <div className='flex items-center justify-between p-4 bg-gray-800 relative'>
+      {/* <div className='flex items-center justify-between p-4 bg-gray-800 relative'>
         <Link to="/" className='text-2xl font-bold'>
           p/war
         </Link>
@@ -22,7 +22,7 @@ const Governance: React.FC = () => {
             8/10PX
           </button>
         </div>
-      </div>
+      </div> */}
       <div className='py-4 px-40 flex-grow overflow-hidden'>
         <ProposalList headerHeight={headerHeight} />
       </div>
