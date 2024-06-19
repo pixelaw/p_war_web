@@ -10,6 +10,11 @@ import Viewport from "./webtools/components/Viewport";
 import SimpleColorPicker from "./webtools/components/ColorPicker/SimpleColorPicker.tsx";
 import MenuBar from "./components/MenuBar.tsx";
 import Apps from "./components/Apps.tsx";
+// import ProposalList from './components/ProposalList.tsx';
+import ProposalListForMain from './components/ProposalListForMain.tsx';
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
+import NewProposalPopupForMain from './components/NewProposalPopupForMain.tsx';
+
 // import { Link } from "react-router-dom";
 
 const ZOOM_PRESETS = { tile: 100, pixel: 3100 };
@@ -20,6 +25,7 @@ function App() {
     const [viewportZoom, setViewportZoom] = useState<number>(DEFAULT_ZOOM);
     const [center, setCenter] = useState<Coordinate>(DEFAULT_CENTER);
     const [isColorPickerVisible, setIsColorPickerVisible] = useState(false);
+    const [isProposalListVisible, setIsProposalListVisible] = useState(true);
     const updateService = useUpdateService(`ws://localhost:3001/tiles`); // TODO url configurable
     const pixelStore = useToriiPixelStore("http://localhost:8080"); // TODO url configurable
     const tileStore = useSimpleTileStore("localhost:3001/tiles"); // TODO url configurable
@@ -73,6 +79,10 @@ function App() {
         setIsColorPickerVisible(prevState => !prevState);
     }
 
+    function toggleProposalList() {
+        setIsProposalListVisible(prevState => !prevState);
+    }
+
     // TODO "slide up" the bottom as the zoom level increases
     const zoombasedAdjustment = useMemo(() => {
         if (viewportZoom > 3000) {
@@ -102,6 +112,45 @@ function App() {
             <div ref={colorPickerRef} className={styles.colorpicker} style={{ bottom: zoombasedAdjustment, display: isColorPickerVisible ? 'flex' : 'none' }}>
                 <SimpleColorPicker onColorSelect={onColorSelect} />
             </div>
+
+            {/* {isProposalListVisible && (
+                <div className={styles.proposalListContainer}>
+                    <ProposalListForMain headerHeight={64} />
+                </div>
+            )} */}
+
+            <div className={styles.proposalListContainer}>
+                <div className={`flex items-center justify-between mb-4`}>
+                    <div className='text-white text-xl font-bold'>
+                        Proposals
+                    </div>
+                    <button className={`ml-auto text-white ${isProposalListVisible ? 'rotate-180' : ''} transition duration-300`} onClick={toggleProposalList}>
+                        <FaArrowDown />
+                    </button>
+                </div>
+                {isProposalListVisible && (
+                    <div className='mb-4'>
+                        <div className=''>
+                            <ProposalListForMain headerHeight={64} />
+                        </div>
+                        <div className='pt-4'>
+                            <NewProposalPopupForMain />
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            {/* {isProposalListVisible ? (
+                <div className="flex items-center space-x-2">
+                    <span>Proposals</span>
+                    <FaArrowUp />
+                </div>
+            ) : (
+                <div className="flex items-center space-x-2">
+                    <span>Proposals</span>
+                    <FaArrowDown />
+                </div>
+            )} */}
 
             {/* <div className={styles.apps} style={{right: zoombasedAdjustment}}>
                 <Apps/>
